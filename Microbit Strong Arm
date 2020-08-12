@@ -1,1 +1,21 @@
+def on_gesture_eight_g():
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.QUARTER))
+input.on_gesture(Gesture.EIGHT_G, on_gesture_eight_g)
+
+def on_gesture_six_g():
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.QUARTER))
+input.on_gesture(Gesture.SIX_G, on_gesture_six_g)
+
+def on_gesture_three_g():
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(880, music.beat(BeatFraction.EIGHTH))
+    music.play_tone(988, music.beat(BeatFraction.QUARTER))
+input.on_gesture(Gesture.THREE_G, on_gesture_three_g)
 
