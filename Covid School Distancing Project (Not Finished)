@@ -1,0 +1,39 @@
+enum RadioMessage {
+    message1 = 49434,
+    ping = 61148
+}
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(text_list.length)
+    basic.pause(500)
+    basic.clearScreen()
+})
+radio.onReceivedMessage(RadioMessage.ping, function () {
+    let list: number[] = []
+    known_serial = 0
+    for (let index = 0; index <= text_list.length; index++) {
+        if (list[index] == radio.receivedPacket(RadioPacketProperty.SerialNumber)) {
+            known_serial = 1
+        }
+    }
+    if (known_serial == 0) {
+        list.push(radio.receivedPacket(RadioPacketProperty.SerialNumber))
+        basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SerialNumber)))
+    }
+    known_serial = 0
+    basic.showNumber(radio.receivedPacket(RadioPacketProperty.SignalStrength))
+})
+input.onButtonPressed(Button.B, function () {
+    basic.showNumber(radio.receivedPacket(RadioPacketProperty.SignalStrength))
+    basic.pause(500)
+    basic.clearScreen()
+})
+let known_serial = 0
+let text_list: number[] = []
+text_list = []
+radio.setGroup(1)
+radio.setTransmitSerialNumber(true)
+basic.forever(function () {
+    radio.sendString("ping")
+    basic.showString("Hello!")
+    basic.pause(2000)
+})
